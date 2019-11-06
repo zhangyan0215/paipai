@@ -1,6 +1,7 @@
 package com.woniuxy.domain;
 
 import java.io.Serializable;
+import java.util.Set;
 
 public class Permissions implements Serializable {
     private Integer pid;
@@ -8,10 +9,20 @@ public class Permissions implements Serializable {
     private String pname;
 
     private String info;
+    
+    private Set<Roles>roles;
 
     private static final long serialVersionUID = 1L;
 
-    public Integer getPid() {
+    public Set<Roles> getRoles() {
+		return roles;
+	}
+
+	public void setRoles(Set<Roles> roles) {
+		this.roles = roles;
+	}
+
+	public Integer getPid() {
         return pid;
     }
 
@@ -34,4 +45,9 @@ public class Permissions implements Serializable {
     public void setInfo(String info) {
         this.info = info == null ? null : info.trim();
     }
+
+	@Override
+	public String toString() {
+		return "Permissions [pid=" + pid + ", pname=" + pname + ", info=" + info + "]";
+	}
 }
