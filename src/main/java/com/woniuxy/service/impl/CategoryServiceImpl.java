@@ -3,12 +3,14 @@ package com.woniuxy.service.impl;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.woniuxy.dao.CategoryMapper;
 import com.woniuxy.domain.Category;
 import com.woniuxy.service.ICategoryService;
 
+@Service
 public class CategoryServiceImpl implements ICategoryService {
 
 	@Autowired

@@ -31,7 +31,7 @@ public class UsersServiceImpl implements IUsersService {
 		users.setSalt(salt);
 		SimpleHash sh = new SimpleHash("md5", password,salt , 1024);
 		users.setPassword(sh.toHex());
-		mapper.insert(users);
+		mapper.insert(users); 
 	}
 
 	@Transactional

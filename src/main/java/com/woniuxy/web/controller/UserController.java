@@ -43,6 +43,7 @@ public class UserController {
 	
 	@GetMapping
 	public List<Users> findAllUsers(){
+		System.out.println("UserController.findAllUsers()");
 		List<Users> users = us.findAll();
 		return users;
 	}

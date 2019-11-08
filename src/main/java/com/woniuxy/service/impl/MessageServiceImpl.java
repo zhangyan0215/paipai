@@ -3,12 +3,13 @@ package com.woniuxy.service.impl;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.woniuxy.dao.MessageMapper;
 import com.woniuxy.domain.Message;
 import com.woniuxy.service.IMessageService;
-
+@Service
 public class MessageServiceImpl implements IMessageService {
 
 	@Autowired
