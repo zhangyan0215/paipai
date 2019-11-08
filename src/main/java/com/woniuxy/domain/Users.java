@@ -1,7 +1,6 @@
 package com.woniuxy.domain;
 
 import java.io.Serializable;
-import java.util.Set;
 
 public class Users implements Serializable {
     private Integer uid;
@@ -15,20 +14,10 @@ public class Users implements Serializable {
     private String photo;
 
     private Integer status;
-    
-    private Set<Roles>roles;
 
     private static final long serialVersionUID = 1L;
 
-    public Set<Roles> getRoles() {
-		return roles;
-	}
-
-	public void setRoles(Set<Roles> roles) {
-		this.roles = roles;
-	}
-
-	public Integer getUid() {
+    public Integer getUid() {
         return uid;
     }
 
@@ -75,10 +64,4 @@ public class Users implements Serializable {
     public void setStatus(Integer status) {
         this.status = status;
     }
-
-	@Override
-	public String toString() {
-		return "Users [uid=" + uid + ", username=" + username + ", password=" + password + ", salt=" + salt + ", photo="
-				+ photo + ", status=" + status + "]";
-	}
 }

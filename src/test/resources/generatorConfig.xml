@@ -59,5 +59,7 @@
 		<table tableName="room"></table>
 		<table tableName="user_address"></table>
 		<table tableName="users"></table>
+		<table tableName="users_roles"></table>
+		<table tableName="roles_permissions"></table>
 	</context>
 </generatorConfiguration>
