@@ -20,7 +20,7 @@ public class UsersServiceImpl implements IUsersService {
 	private UsersMapper mapper;
 	
 	@Autowired
-	private UsersRolesMapper urm;
+	private UsersRolesMapper urm; 
 	    
 
 	@Transactional
