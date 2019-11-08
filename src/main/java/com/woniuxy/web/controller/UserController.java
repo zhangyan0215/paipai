@@ -32,8 +32,8 @@ public class UserController {
 	public void saveUser(@RequestBody Users user,Integer roles) {
 		
 		System.out.println("UserController.saveUser()");
-		System.out.println(roles);
-		us.save(user,roles); 
+		System.out.println(user.getPassword()+" " + user.getUsername());
+		us.save(user,roles);
 	}
 	
 	@PutMapping

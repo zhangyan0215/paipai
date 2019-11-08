@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.apache.shiro.crypto.hash.SimpleHash;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.woniuxy.dao.UsersMapper;
@@ -12,6 +13,7 @@ import com.woniuxy.domain.Users;
 import com.woniuxy.domain.UsersRolesKey;
 import com.woniuxy.service.IUsersService;
 
+@Service
 public class UsersServiceImpl implements IUsersService {
 
 	@Autowired
@@ -20,8 +22,6 @@ public class UsersServiceImpl implements IUsersService {
 	@Autowired
 	private UsersRolesMapper urm;
 	
-	@Autowired
-	private UsersRolesKey urk;
 
 	@Transactional
 	@Override
@@ -31,9 +31,6 @@ public class UsersServiceImpl implements IUsersService {
 		users.setSalt(salt);
 		SimpleHash sh = new SimpleHash("md5", password,salt , 1024);
 		users.setPassword(sh.toHex());
-		urk.setUid(users.getUid()); 
-		urk.setRid(roles); 
-		urm.insert(urk);
 		mapper.insert(users);
 	}
 
