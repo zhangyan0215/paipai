@@ -3,12 +3,13 @@ package com.woniuxy.service.impl;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.woniuxy.dao.PermissionsMapper;
 import com.woniuxy.domain.Permissions;
 import com.woniuxy.service.IPermissionsService;
-
+@Service
 public class PermissionsServiceImpl implements IPermissionsService {
 
 	@Autowired

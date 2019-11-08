@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.apache.shiro.crypto.hash.SimpleHash;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.woniuxy.dao.UsersMapper;
@@ -11,7 +12,7 @@ import com.woniuxy.dao.UsersRolesMapper;
 import com.woniuxy.domain.Users;
 import com.woniuxy.domain.UsersRolesKey;
 import com.woniuxy.service.IUsersService;
-
+@Service
 public class UsersServiceImpl implements IUsersService {
 
 	@Autowired

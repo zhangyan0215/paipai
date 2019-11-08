@@ -3,12 +3,13 @@ package com.woniuxy.service.impl;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.woniuxy.dao.DepositMapper;
 import com.woniuxy.domain.Deposit;
 import com.woniuxy.service.IDepositService;
-
+@Service
 public class DepositServiceImpl implements IDepositService {
 
 	@Autowired

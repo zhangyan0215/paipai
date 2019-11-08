@@ -3,12 +3,13 @@ package com.woniuxy.service.impl;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.woniuxy.dao.UserAddressMapper;
 import com.woniuxy.domain.UserAddress;
 import com.woniuxy.service.IUserAddressService;
-
+@Service
 public class UserAddressServiceImpl implements IUserAddressService {
 
 	@Autowired
