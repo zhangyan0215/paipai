@@ -318,4 +318,65 @@
       uid = #{uid,jdbcType=INTEGER}
     where proid = #{proid,jdbcType=INTEGER}
   </update>
+  
+  
+  
+  
+  
+  
+  
+  
+ <!--  多表联合查询产品 -->
+   <select id="selectAll" resultMap="rm">
+  	SELECT * FROM product JOIN category ON product.cid=category.cid
+	JOIN address ON product.aid=address.aid
+	JOIN users ON product.uid=users.uid
+  </select>
+  
+  <resultMap type="com.woniuxy.domain.Product" id="rm">
+  	<id property="proid" column="proid"></id>
+  	<result property="pname" column="pname"/>
+  	<result property="startPrice" column="start_price"/>
+  	<result property="startTime" column="start_time"/>
+  	<result property="endTime" column="end_time"/>
+  	<result property="looktimes" column="looktimes"/>
+  	<result property="photo" column="photo"/>
+  	<result property="status" column="status"/>
+  	<result property="addmoney" column="addmoney"/>
+	<association property="category" javaType="com.woniuxy.domain.Category">
+		<id property="cid" column="cid"/>
+		<result property="cname" column="cname"/>
+		<result property="info" column="info"/>
+	</association>  
+	<association property="address" javaType="com.woniuxy.domain.Address">
+		<id property="aid" column="aid"/>
+		<result property="city" column="city"/>
+	</association> 
+	<association property="users" javaType="com.woniuxy.domain.Users">
+		<id property="uid" column="uid"/>
+		<result property="username" column="username"/>
+		<result property="password" column="password"/>
+		<result property="salt" column="salt"/>
+		<result property="photo" column="photo"/>
+		<result property="status" column="status"/>
+	</association>  		
+  </resultMap>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
 </mapper>
