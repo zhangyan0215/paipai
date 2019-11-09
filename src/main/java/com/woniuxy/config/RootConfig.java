@@ -12,8 +12,8 @@ public class RootConfig implements WebMvcConfigurer {
 	public void addCorsMappings(CorsRegistry registry) {
 		registry.addMapping("/**") //
 				.allowedOrigins("*") //
-				.allowedMethods("*") //
-				.allowedHeaders("*");
+				.allowedMethods("PUT", "GET", "POST", "DELETE", "OPTIONS") //
+				.allowedHeaders("Content-Type", "Accept");
 	}
 
 	@Override
@@ -22,7 +22,5 @@ public class RootConfig implements WebMvcConfigurer {
 		WebMvcConfigurer.super.addInterceptors(registry);
 		registry.addInterceptor(new Logs()).addPathPatterns("/**");
 	}
-	
-	
-	
+
 }

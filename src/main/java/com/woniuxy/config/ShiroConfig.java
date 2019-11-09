@@ -24,7 +24,7 @@ public class ShiroConfig {
 		ds.setDriverClassName("com.mysql.jdbc.Driver");
 		ds.setUrl("jdbc:mysql://localhost:3306/paipai?characterEncoding=utf8");
 		ds.setUsername("root");
-		ds.setPassword("root");
+		ds.setPassword("123456");
 		return ds;
 	}
 	//加密
