@@ -15,6 +15,8 @@ public class Logs implements Serializable {
     private String method;
 
     private String clientIp;
+    
+    private Users users;
 
     private static final long serialVersionUID = 1L;
 
@@ -62,7 +64,15 @@ public class Logs implements Serializable {
         return clientIp;
     }
 
-    public void setClientIp(String clientIp) {
+    public Users getUsers() {
+		return users;
+	}
+
+	public void setUsers(Users users) {
+		this.users = users;
+	}
+
+	public void setClientIp(String clientIp) {
         this.clientIp = clientIp == null ? null : clientIp.trim();
     }
 }
