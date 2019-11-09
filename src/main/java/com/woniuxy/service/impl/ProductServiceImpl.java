@@ -42,7 +42,7 @@ public class ProductServiceImpl implements IProductService {
 	@Transactional
 	@Override
 	public List<Product> findAll() {
-		return mapper.selectByExample(null);
+		return mapper.selectAll();
 	}
 
 }

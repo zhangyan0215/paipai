@@ -58,4 +58,10 @@ public class UsersServiceImpl implements IUsersService {
 		return mapper.selectByExample(null);
 	}
 
+	@Override
+	public List<Users> findAllUsersByroles(Integer rid) {
+		// TODO Auto-generated method stub
+		return mapper.selectUsersByRoles(rid);
+	}
+
 }

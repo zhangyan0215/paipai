@@ -42,7 +42,7 @@ public class OrdersServiceImpl implements IOrdersService {
 	@Transactional
 	@Override
 	public List<Orders> findAll() {
-		return mapper.selectByExample(null);
+		return mapper.findOrdersWithProductAndUsers();
 	}
 
 }

@@ -1,9 +1,11 @@
 package com.woniuxy.dao;
 
+import java.util.List;
+
+import org.apache.ibatis.annotations.Param;
+
 import com.woniuxy.domain.Room;
 import com.woniuxy.domain.RoomExample;
-import java.util.List;
-import org.apache.ibatis.annotations.Param;
 
 public interface RoomMapper {
     long countByExample(RoomExample example);
@@ -27,4 +29,6 @@ public interface RoomMapper {
     int updateByPrimaryKeySelective(Room record);
 
     int updateByPrimaryKey(Room record);
+    
+    List<Room> selectAll();
 }
