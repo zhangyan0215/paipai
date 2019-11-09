@@ -16,8 +16,20 @@ public class Users implements Serializable {
     private Integer status;
 
     private static final long serialVersionUID = 1L;
+    
+    private UserAddress userAddress;
+    
+    
 
-    public Integer getUid() {
+    public UserAddress getUseraddress() {
+		return userAddress;
+	}
+
+	public void setUseraddress(UserAddress userAddress) {
+		this.userAddress = userAddress;
+	}
+
+	public Integer getUid() {
         return uid;
     }
 
@@ -64,4 +76,12 @@ public class Users implements Serializable {
     public void setStatus(Integer status) {
         this.status = status;
     }
+
+	@Override
+	public String toString() {
+		return "Users [uid=" + uid + ", username=" + username + ", password=" + password + ", salt=" + salt + ", photo="
+				+ photo + ", status=" + status + "]";
+	}
+    
+    
 }

@@ -1,6 +1,7 @@
 package com.woniuxy.web.controller;
 
 import java.util.List;
+import java.util.Map;
 
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.AuthenticationException;
@@ -55,13 +56,17 @@ public class UserController {
 	}
 	
 	@RequestMapping("login")
-	public String save(String username,String password){
+	public String login(String username,String password){
 		Subject subject = SecurityUtils.getSubject();
 		UsernamePasswordToken token = new UsernamePasswordToken(username,password);
 		try {
 			subject.login(token);
 			System.out.println("认证成功");
-			return "index";
+			if(subject.hasRole("超级管理员")) {
+				return "index";
+			}else {
+				return "login";
+			}
 		} catch (AuthenticationException e) {
 			// TODO Auto-generated catch block
 			System.out.println("认证失败");
@@ -69,4 +74,13 @@ public class UserController {
 			return "login";
 		}
 	}
+	
+	@RequestMapping("findAllUsersByroles")
+	public List<Users> findAllSellers(@RequestBody Map map){
+		Integer rid = (Integer) map.get("rid");
+		List<Users> users = us.findAllUsersByroles(rid);
+		System.out.println(users);
+		return users;
+	}
+	
 }
