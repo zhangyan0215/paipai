@@ -225,4 +225,42 @@
       client_ip = #{clientIp,jdbcType=VARCHAR}
     where lid = #{lid,jdbcType=INTEGER}
   </update>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <select id="findAllLogsWithUsers" resultMap="rm">
+  	SELECT * FROM logs l JOIN users u
+	ON l.uid = u.uid
+  </select>
+  
+  
+   <resultMap type="com.woniuxy.domain.Logs" id="rm">
+  	<id property="lid" column="lid"></id>
+  	<result property="datetime" column="datetime"/>
+  	<result property="url" column="url"/>
+  	<result property="method" column="method"/>
+  	<result property="clientIp" column="client_ip"/>
+  	
+	<association property="users" javaType="com.woniuxy.domain.Users">
+		<id property="uid" column="uid"/>
+		<result property="username" column="username"/>
+		<result property="password" column="password"/>
+		<result property="salt" column="salt"/>
+		<result property="photo" column="photo"/>
+		<result property="status" column="status"/>
+		
+	</association>  	
+  </resultMap>
 </mapper>
