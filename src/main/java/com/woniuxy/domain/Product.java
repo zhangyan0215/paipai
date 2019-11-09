@@ -2,6 +2,7 @@ package com.woniuxy.domain;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.Set;
 
 public class Product implements Serializable {
     private Integer proid;
@@ -29,8 +30,40 @@ public class Product implements Serializable {
     private Integer uid;
 
     private static final long serialVersionUID = 1L;
+    
+    private Category category;
+    
+    private Address address;
+    
+    private Users users;
+    
+   
 
-    public Integer getProid() {
+	public Category getCategory() {
+		return category;
+	}
+
+	public void setCategory(Category category) {
+		this.category = category;
+	}
+
+	public Address getAddress() {
+		return address;
+	}
+
+	public void setAddress(Address address) {
+		this.address = address;
+	}
+
+	public Users getUsers() {
+		return users;
+	}
+
+	public void setUsers(Users users) {
+		this.users = users;
+	}
+
+	public Integer getProid() {
         return proid;
     }
 

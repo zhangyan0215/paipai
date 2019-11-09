@@ -17,35 +17,33 @@ import com.woniuxy.service.IOrdersService;
 
 @RestController
 @RequestMapping("orders")
-public class OrederController {
+public class OrderController {
 
 	@Autowired
 	private IOrdersService service;
 
 	@PostMapping
 	public void save(@RequestBody Orders orders) {
-		System.out.println("OrederController.save()");
+//		service.save(orders);
 	}
 
 	@PutMapping
 	public void update(@RequestBody Orders orders) {
-		System.out.println("OrederController.update()");
+		service.update(orders);
 	}
 
-	@DeleteMapping
-	public void delete(Integer oid) {
-		System.out.println("OrederController.delete()");
+	@DeleteMapping("{oid}")
+	public void delete(@PathVariable Integer oid) {
+		service.delete(oid);
 	}
 
 	@GetMapping("{oid}")
 	public Orders findOne(@PathVariable Integer oid) {
-		System.out.println("OrederController.findOne()");
-		return null;
+		return service.findOne(oid);
 	}
 
 	@GetMapping
 	public List<Orders> findAll() {
-		System.out.println("OrederController.findAll()");
-		return null;
+		return service.findAll();
 	}
 }
