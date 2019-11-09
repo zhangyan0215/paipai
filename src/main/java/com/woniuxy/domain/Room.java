@@ -9,7 +9,17 @@ public class Room implements Serializable {
 
     private Integer port;
 
+	private Product product;
+	
     private static final long serialVersionUID = 1L;
+    
+    public Product getProduct() {
+		return product;
+	}
+
+	public void setProduct(Product product) {
+		this.product = product;
+	}
 
     public Integer getRoomid() {
         return roomid;

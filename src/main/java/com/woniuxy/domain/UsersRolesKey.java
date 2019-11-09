@@ -2,6 +2,8 @@ package com.woniuxy.domain;
 
 import java.io.Serializable;
 
+import org.springframework.stereotype.Component;
+
 public class UsersRolesKey implements Serializable {
     private Integer uid;
 

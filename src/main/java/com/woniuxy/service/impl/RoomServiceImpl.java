@@ -42,7 +42,7 @@ public class RoomServiceImpl implements IRoomService {
 	@Transactional(readOnly = true)
 	@Override
 	public List<Room> findAll() {
-		return mapper.selectByExample(null);
+		List<Room> rooms = mapper.selectAll();
+		return rooms;
 	}
-
 }

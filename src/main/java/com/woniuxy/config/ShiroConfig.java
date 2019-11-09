@@ -1,5 +1,8 @@
 package com.woniuxy.config;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import org.apache.shiro.authc.credential.HashedCredentialsMatcher;
 import org.apache.shiro.realm.jdbc.JdbcRealm;
 import org.apache.shiro.realm.jdbc.JdbcRealm.SaltStyle;
@@ -57,7 +60,10 @@ public class ShiroConfig {
 	public ShiroFilterFactoryBean shiroFilter() {
 		ShiroFilterFactoryBean shiroFilter = new ShiroFilterFactoryBean();
 		shiroFilter.setSecurityManager(securityManager());
-		
+		Map<String, String> map = new HashMap<>();
+		map.put("/users/login", "anon");
+		map.put("/logout", "logout");
+		map.put("/**", "authc");
 		return shiroFilter;
 	}
 	//shiro注解

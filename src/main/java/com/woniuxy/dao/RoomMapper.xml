@@ -178,4 +178,26 @@
       port = #{port,jdbcType=INTEGER}
     where roomid = #{roomid,jdbcType=INTEGER}
   </update>
+  
+  
+  
+  <!-- 自定义方法:竞拍室的后台全查询 -->
+  <resultMap id="AllMap" type="com.woniuxy.domain.Room">
+    <id column="roomid" jdbcType="INTEGER" property="roomid" />
+    <result column="port" jdbcType="INTEGER" property="port" />
+    <association property="product" javaType="com.woniuxy.domain.Product">
+    	<id property="proid" column="proid"/>
+   		<result column="pname" property="pname" />
+   		<result column="status" property="status" />
+    </association>
+  </resultMap>
+  
+  <select id="selectAll" resultMap="AllMap">
+  		SELECT roomid,pname,status,port
+  		FROM Room
+  		INNER JOIN product
+  		ON room.proid=product.proid
+  </select>
+  
+  
 </mapper>
