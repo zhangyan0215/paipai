@@ -18,7 +18,6 @@ public class RoomController {
 	
 	@GetMapping
 	public List<Room> findAll(){
-		System.out.println("11111111");
 		return service.findAll();
 	}
 }
