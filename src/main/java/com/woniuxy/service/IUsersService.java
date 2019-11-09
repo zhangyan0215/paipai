@@ -11,4 +11,5 @@ public interface IUsersService {
 	void update(Users users);
 	Users findOne(Integer uid);
 	List<Users> findAll();
+	List<Users> findAllUsersByroles(Integer rid);
 }

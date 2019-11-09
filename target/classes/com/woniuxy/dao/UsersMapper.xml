@@ -225,4 +225,27 @@
       status = #{status,jdbcType=INTEGER}
     where uid = #{uid,jdbcType=INTEGER}
   </update>
+  
+  
+  <select id="selectUsersByRoles" resultMap="ref" parameterType="java.lang.Integer">
+  	SELECT u.photo,u.uid,u.username,u.password,u.`status`,ua.uaid,ua.city,ua.town,ua.street,ua.number,ua.tel,ua.zip from users u JOIN users_roles ur on u.uid=ur.uid join user_address ua on u.uid=ua.uid where ur.rid=#{rid}
+  </select>
+  
+ <resultMap type="com.woniuxy.domain.Users" id="ref">
+  	<id property="uid" column="uid"/>
+	<result property="username" column="username"/>
+	<result property="password" column="password"/>
+	<result property="photo" column="photo"></result>
+	<result property="status" column="status"></result>
+	<result property="salt" column="salt"></result>
+	<collection property="userAddress" ofType="com.woniuxy.domain.UserAddress">
+		<id property="uaid" column="uaid"/>
+	  	<result property="city" column="city"></result>
+	  	<result property="town" column="town"/>
+	  	<result property="street" column="street"/>
+	  	<result property="number" column="number"/>
+	  	<result property="zip" column="zip"/>
+	  	<result property="tel" column="tel"/>
+	</collection>
+  </resultMap>
 </mapper>
