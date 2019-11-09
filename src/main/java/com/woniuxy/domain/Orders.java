@@ -3,86 +3,121 @@ package com.woniuxy.domain;
 import java.io.Serializable;
 import java.util.Date;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 public class Orders implements Serializable {
-    private Integer oid;
+	private Integer oid;
 
-    private Integer proid;
+	private Integer proid;
 
-    private Integer uid;
+	private Integer uid;
 
-    private Double price;
+	private Double price;
 
-    private Date datetime;
+	private Date datetime;
 
-    private Double pay;
+	private Double pay;
 
-    private Date limitTime;
+	private Date limitTime;
 
-    private Date paytime;
+	private Date paytime;
 
-    private static final long serialVersionUID = 1L;
+	private Users users;
 
-    public Integer getOid() {
-        return oid;
-    }
+	private Product product;
 
-    public void setOid(Integer oid) {
-        this.oid = oid;
-    }
+	private static final long serialVersionUID = 1L;
 
-    public Integer getProid() {
-        return proid;
-    }
+	public Orders() {
+		super();
+	}
 
-    public void setProid(Integer proid) {
-        this.proid = proid;
-    }
+	public Product getProduct() {
+		return product;
+	}
 
-    public Integer getUid() {
-        return uid;
-    }
+	public void setProduct(Product product) {
+		this.product = product;
+	}
 
-    public void setUid(Integer uid) {
-        this.uid = uid;
-    }
+	public Users getUsers() {
+		return users;
+	}
 
-    public Double getPrice() {
-        return price;
-    }
+	public void setUsers(Users users) {
+		this.users = users;
+	}
 
-    public void setPrice(Double price) {
-        this.price = price;
-    }
+	public Integer getOid() {
+		return oid;
+	}
 
-    public Date getDatetime() {
-        return datetime;
-    }
+	public void setOid(Integer oid) {
+		this.oid = oid;
+	}
 
-    public void setDatetime(Date datetime) {
-        this.datetime = datetime;
-    }
+	public Integer getProid() {
+		return proid;
+	}
 
-    public Double getPay() {
-        return pay;
-    }
+	public void setProid(Integer proid) {
+		this.proid = proid;
+	}
 
-    public void setPay(Double pay) {
-        this.pay = pay;
-    }
+	public Integer getUid() {
+		return uid;
+	}
 
-    public Date getLimitTime() {
-        return limitTime;
-    }
+	public void setUid(Integer uid) {
+		this.uid = uid;
+	}
 
-    public void setLimitTime(Date limitTime) {
-        this.limitTime = limitTime;
-    }
+	public Double getPrice() {
+		return price;
+	}
 
-    public Date getPaytime() {
-        return paytime;
-    }
+	public void setPrice(Double price) {
+		this.price = price;
+	}
 
-    public void setPaytime(Date paytime) {
-        this.paytime = paytime;
-    }
+	@JsonFormat(pattern = "yyyy-MM-dd", timezone = "GMT+8")
+	public Date getDatetime() {
+		return datetime;
+	}
+
+	public void setDatetime(Date datetime) {
+		this.datetime = datetime;
+	}
+
+	public Double getPay() {
+		return pay;
+	}
+
+	public void setPay(Double pay) {
+		this.pay = pay;
+	}
+
+	@JsonFormat(pattern = "yyyy-MM-dd", timezone = "GMT+8")
+	public Date getLimitTime() {
+		return limitTime;
+	}
+
+	public void setLimitTime(Date limitTime) {
+		this.limitTime = limitTime;
+	}
+
+	@JsonFormat(pattern = "yyyy-MM-dd", timezone = "GMT+8")
+	public Date getPaytime() {
+		return paytime;
+	}
+
+	public void setPaytime(Date paytime) {
+		this.paytime = paytime;
+	}
+
+	@Override
+	public String toString() {
+		return "Orders [oid=" + oid + ", proid=" + proid + ", uid=" + uid + ", price=" + price + ", datetime="
+				+ datetime + ", pay=" + pay + ", limitTime=" + limitTime + ", paytime=" + paytime + "]";
+	}
 }
