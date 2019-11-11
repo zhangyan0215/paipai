@@ -27,4 +27,6 @@ public interface LogsMapper {
     int updateByPrimaryKeySelective(Logs record);
 
     int updateByPrimaryKey(Logs record);
+    
+    List<Logs> findAllLogsWithUsers();
 }

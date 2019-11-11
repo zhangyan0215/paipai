@@ -1,23 +1,19 @@
 package com.woniuxy.config;
 
-
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.apache.ibatis.plugin.Intercepts;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
 
 public class Logs implements HandlerInterceptor {
 
-  //记录哪个服务器访问了什么方法
+	// 记录哪个服务器访问了什么方法
 	@Override
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
 			throws Exception {
 		// TODO Auto-generated method stub
-		System.out.println(request.getHeader("Host")+"------");
+		System.out.println(request.getHeader("Host") + "------");
 		String ip = request.getHeader("x-forwarded-for");
 		if (ip == null || ip.length() == 0 || "unknown".equalsIgnoreCase(ip)) {
 			ip = request.getHeader("Proxy-Client-IP");
@@ -26,7 +22,7 @@ public class Logs implements HandlerInterceptor {
 			ip = request.getHeader("WL-Proxy-Client-IP");
 		}
 		if (ip == null || ip.length() == 0 || "unknown".equalsIgnoreCase(ip)) {
-			ip =  request.getHeader("X-Real-IP");
+			ip = request.getHeader("X-Real-IP");
 		}
 		if (ip == null || ip.length() == 0 || "unknown".equalsIgnoreCase(ip)) {
 			ip = request.getRemoteAddr();
@@ -34,9 +30,9 @@ public class Logs implements HandlerInterceptor {
 		if (ip.indexOf(",") != -1) {
 			ip = ip.substring(0, ip.indexOf(","));
 		}
-		System.out.println(ip.trim()+"===================");
-		 String path = request.getServletPath();
-	    System.out.println("访问服务地址:{"+path+"}");
+		System.out.println(ip.trim() + "===================");
+		String path = request.getServletPath();
+		System.out.println("访问服务地址:{" + path + "}");
 		System.out.println("进入拦截器");
 		return true;
 	}
@@ -56,5 +52,4 @@ public class Logs implements HandlerInterceptor {
 		HandlerInterceptor.super.afterCompletion(request, response, handler, ex);
 	}
 
-	
 }

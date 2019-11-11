@@ -22,7 +22,5 @@ public class RootConfig implements WebMvcConfigurer {
 		WebMvcConfigurer.super.addInterceptors(registry);
 		registry.addInterceptor(new Logs()).addPathPatterns("/**");
 	}
-	
-	
-	
+
 }
