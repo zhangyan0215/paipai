@@ -12,8 +12,10 @@ public class RootConfig implements WebMvcConfigurer {
 	public void addCorsMappings(CorsRegistry registry) {
 		registry.addMapping("/**") //
 				.allowedOrigins("*") //
-				.allowedMethods("PUT", "GET", "POST", "DELETE", "OPTIONS") //
-				.allowedHeaders("Content-Type", "Accept");
+				.allowedMethods("*") //
+				.allowedHeaders("*")
+				.allowCredentials(true)   //允许客户端跨ajax域携带cookie
+				.maxAge(60);  
 	}
 
 	@Override

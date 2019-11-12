@@ -1,7 +1,9 @@
 package com.woniuxy.service.impl;
 
 import java.util.List;
+import java.util.Map;
 
+import org.apache.commons.collections.map.HashedMap;
 import org.apache.shiro.crypto.hash.SimpleHash;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -25,13 +27,17 @@ public class UsersServiceImpl implements IUsersService {
 
 	@Transactional
 	@Override
-	public void save(Users users,Integer roles) {
+	public void save(Users users,Integer rid) {
 		String password = users.getPassword();
 		String salt= "abc";
 		users.setSalt(salt);
 		SimpleHash sh = new SimpleHash("md5", password,salt , 1024);
 		users.setPassword(sh.toHex());
-		mapper.insert(users); 
+		mapper.insertSelective(users); 
+		Map map = new HashedMap();
+		map.put("rid", rid);
+		map.put("uid", users.getUid());
+		mapper.saveUserRole(map);
 	}
 
 	@Transactional

@@ -1,5 +1,6 @@
 package com.woniuxy.web.controller;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -27,14 +28,15 @@ public class UserController {
 	@Autowired
 	private IUsersService us;
 	
-	/* @PostMapping */
-	
-	@RequestMapping("save")
-	public void saveUser(@RequestBody Users user,Integer roles) {
+	/* @RequestMapping("save") */
+	@PostMapping("{rid}")
+	public void saveUser(@RequestBody Users user,@PathVariable Integer rid) {
 		
 		System.out.println("UserController.saveUser()");
-		System.out.println(user.getPassword()+" " + user.getUsername());
-		us.save(user,roles);
+		/* Integer roles = (Integer) map.get("roles"); */
+		System.out.println(user.getPassword()+" " + user.getUsername()+rid);
+		us.save(user,rid);
+		
 	}
 	
 	@PutMapping
@@ -45,7 +47,7 @@ public class UserController {
 	@GetMapping
 	public List<Users> findAllUsers(){
 		System.out.println("UserController.findAllUsers()");
-		List<Users> users = us.findAll(); //test测试   sad
+		List<Users> users = us.findAll(); 
 		return users;
 	}
 	
@@ -57,13 +59,15 @@ public class UserController {
 	
 	@RequestMapping("login")
 	public String login(String username,String password){
-		System.out.println("login................");
 		Subject subject = SecurityUtils.getSubject();
 		UsernamePasswordToken token = new UsernamePasswordToken(username,password);
 		try {
 			subject.login(token);
+			System.out.println(subject.getSession().getId()+"login");
 			System.out.println("认证成功");
 			if(subject.hasRole("超级管理员")||subject.hasRole("普通管理员")) {
+				return "index";
+			}else if(subject.hasRole("卖家")||subject.hasRole("买家")) {
 				return "index";
 			}else {
 				return "login";
@@ -76,12 +80,23 @@ public class UserController {
 		}
 	}
 	
+	//根据角色查找所有用户
 	@RequestMapping("findAllUsersByroles")
 	public List<Users> findAllSellers(@RequestBody Map map){
 		Integer rid = (Integer) map.get("rid");
 		List<Users> users = us.findAllUsersByroles(rid);
 		System.out.println(users);
 		return users;
+	}
+	
+	@RequestMapping("isLogin")
+	public Map<String, Object> isLogin() {
+		Subject subject = SecurityUtils.getSubject();
+		System.out.println(subject.getSession().getId()+"loginiiiiiiiiii");
+		System.out.println(subject.isAuthenticated());
+		Map<String, Object> map = new HashMap<>();
+		map.put("isLogin", subject.isAuthenticated());
+		return map;
 	}
 	
 }

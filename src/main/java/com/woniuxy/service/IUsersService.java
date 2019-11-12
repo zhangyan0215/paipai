@@ -6,7 +6,7 @@ import com.woniuxy.domain.Users;
 
 public interface IUsersService {
 
-	void save(Users users,Integer roles);
+	void save(Users users,Integer rid);
 	void delete(Integer uid);
 	void update(Users users);
 	Users findOne(Integer uid);
