@@ -65,7 +65,7 @@ public class ShiroConfig {
 		Map<String, String> map = new HashMap<>();
 		map.put("/users/login", "anon");
 		map.put("/logout", "logout");
-		map.put("/**", "authc");
+		/* map.put("/**", "authc"); */
 		shiroFilter.setFilterChainDefinitionMap(map);
 		return shiroFilter;
 	}

@@ -11,4 +11,6 @@ public interface IProductService {
 	void update(Product product);
 	Product findOne(Integer proid);
 	List<Product> findAll();
+	 //查找热门前n产品
+	List<Product> findByLooktimesTen(Integer num);
 }
