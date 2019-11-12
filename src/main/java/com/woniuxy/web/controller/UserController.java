@@ -57,12 +57,13 @@ public class UserController {
 	
 	@RequestMapping("login")
 	public String login(String username,String password){
+		System.out.println("login................");
 		Subject subject = SecurityUtils.getSubject();
 		UsernamePasswordToken token = new UsernamePasswordToken(username,password);
 		try {
 			subject.login(token);
 			System.out.println("认证成功");
-			if(subject.hasRole("超级管理员")) {
+			if(subject.hasRole("超级管理员")||subject.hasRole("普通管理员")) {
 				return "index";
 			}else {
 				return "login";

@@ -60,17 +60,20 @@ public class ShiroConfig {
 	public ShiroFilterFactoryBean shiroFilter() {
 		ShiroFilterFactoryBean shiroFilter = new ShiroFilterFactoryBean();
 		shiroFilter.setSecurityManager(securityManager());
+		shiroFilter.setLoginUrl("/login.html");
+		shiroFilter.setUnauthorizedUrl("/login.html");
 		Map<String, String> map = new HashMap<>();
 		map.put("/users/login", "anon");
 		map.put("/logout", "logout");
-		map.put("/**", "authc");
+		/* map.put("/**", "authc"); */
+		shiroFilter.setFilterChainDefinitionMap(map);
 		return shiroFilter;
 	}
 	//shiro注解
-	@Bean
-	public AuthorizationAttributeSourceAdvisor attributeSourceAdvisor() {
-		AuthorizationAttributeSourceAdvisor aasa = new AuthorizationAttributeSourceAdvisor();
-		aasa.setSecurityManager(securityManager());
-		return aasa;
-	}
+//	@Bean
+//	public AuthorizationAttributeSourceAdvisor attributeSourceAdvisor() {
+//		AuthorizationAttributeSourceAdvisor aasa = new AuthorizationAttributeSourceAdvisor();
+//		aasa.setSecurityManager(securityManager());
+//		return aasa;
+//	}
 }
