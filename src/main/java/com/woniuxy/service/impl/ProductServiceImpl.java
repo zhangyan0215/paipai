@@ -44,5 +44,11 @@ public class ProductServiceImpl implements IProductService {
 	public List<Product> findAll() {
 		return mapper.selectAll();
 	}
-
+	
+	//查找热门前n产品
+	@Transactional
+	@Override
+	public List<Product> findByLooktimesTen(Integer num) {
+		return mapper.selectByLooktimesTen(num);
+	}
 }

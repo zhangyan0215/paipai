@@ -31,4 +31,8 @@ public interface ProductMapper {
     
     //多表联合查询产品
     List<Product> selectAll();
+    
+    //查找热门前n产品
+	List<Product> selectByLooktimesTen(Integer num);
+	
 }
