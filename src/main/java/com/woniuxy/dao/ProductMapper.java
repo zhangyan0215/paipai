@@ -1,9 +1,12 @@
 package com.woniuxy.dao;
 
+import java.util.List;
+
+import org.apache.ibatis.annotations.Param;
+import org.apache.ibatis.session.RowBounds;
+
 import com.woniuxy.domain.Product;
 import com.woniuxy.domain.ProductExample;
-import java.util.List;
-import org.apache.ibatis.annotations.Param;
 
 public interface ProductMapper {
     long countByExample(ProductExample example);
@@ -31,4 +34,8 @@ public interface ProductMapper {
     
     //多表联合查询产品
     List<Product> selectAll();
+    //产品收藏数查询
+    List<Product> selectAll1(RowBounds rb);
+    //总行数查询
+    int selectCountPage();
 }

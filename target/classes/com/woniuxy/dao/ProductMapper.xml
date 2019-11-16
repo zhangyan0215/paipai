@@ -362,10 +362,47 @@
 	</association>  		
   </resultMap>
   
-  
-  
-  
-  
+  <!-- 多表联合查询收藏数 -->
+  	<select id="selectAll1" resultMap="rm1">
+  	select * from product 
+	left JOIN
+	(select proid,count(*) cols from collection 
+	GROUP BY proid) a
+	on product.proid = a.proid
+  </select>
+   <resultMap type="com.woniuxy.domain.Product" id="rm1">
+  	<id property="proid" column="proid"></id>
+  	<result property="pname" column="pname"/>
+  	<result property="startPrice" column="start_price"/>
+  	<result property="startTime" column="start_time"/>
+  	<result property="endTime" column="end_time"/>
+  	<result property="looktimes" column="looktimes"/>
+  	<result property="photo" column="photo"/>
+  	<result property="status" column="status"/>
+  	<result property="addmoney" column="addmoney"/>
+  	<result property="cols" column="cols"/>
+	<association property="category" javaType="com.woniuxy.domain.Category">
+		<id property="cid" column="cid"/>
+		<result property="cname" column="cname"/>
+		<result property="info" column="info"/>
+	</association>  
+	<association property="address" javaType="com.woniuxy.domain.Address">
+		<id property="aid" column="aid"/>
+		<result property="city" column="city"/>
+	</association> 
+	<association property="users" javaType="com.woniuxy.domain.Users">
+		<id property="uid" column="uid"/>
+		<result property="username" column="username"/>
+		<result property="password" column="password"/>
+		<result property="salt" column="salt"/>
+		<result property="photo" column="photo"/>
+		<result property="status" column="status"/>
+	</association> 		
+  </resultMap>
+  <!--  总行数 -->
+  <select id="selectCountPage" resultType="java.lang.Integer">
+  	select count(*) from product
+  </select>
   
   
   

@@ -2,7 +2,6 @@ package com.woniuxy.domain;
 
 import java.io.Serializable;
 import java.util.Date;
-import java.util.Set;
 
 public class Product implements Serializable {
     private Integer proid;
@@ -37,7 +36,17 @@ public class Product implements Serializable {
     
     private Users users;
     
+    private Integer cols;
+    
    
+
+	public Integer getCols() {
+		return cols;
+	}
+
+	public void setCols(Integer cols) {
+		this.cols = cols;
+	}
 
 	public Category getCategory() {
 		return category;

@@ -2,6 +2,7 @@ package com.woniuxy.service.impl;
 
 import java.util.List;
 
+import org.apache.ibatis.session.RowBounds;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -43,6 +44,25 @@ public class ProductServiceImpl implements IProductService {
 	@Override
 	public List<Product> findAll() {
 		return mapper.selectAll();
+	}
+
+	@Override
+	public List<Product> findAll1(int i) {
+		int a = i * 2;
+		RowBounds rb = new RowBounds(a,2);
+		return mapper.selectAll1(rb);
+	}
+
+	@Override
+	public Integer findCountPage() {
+		Integer c = mapper.selectCountPage();
+		Integer a;
+		if (c%2>0) {
+			a = c/2+1;
+		}else {
+			a = c/2;
+		}
+		return a;
 	}
 
 }

@@ -12,9 +12,10 @@ public class Collection implements Serializable {
 
     private Date datetime;
 
+
     private static final long serialVersionUID = 1L;
 
-    public Integer getCoid() {
+	public Integer getCoid() {
         return coid;
     }
 

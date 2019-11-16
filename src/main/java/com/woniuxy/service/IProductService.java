@@ -11,4 +11,6 @@ public interface IProductService {
 	void update(Product product);
 	Product findOne(Integer proid);
 	List<Product> findAll();
+	List<Product> findAll1(int i);
+	Integer findCountPage();
 }
