@@ -33,7 +33,7 @@ public class Logs implements HandlerInterceptor {
 		System.out.println(ip.trim() + "===================");
 		String path = request.getServletPath();
 		System.out.println("访问服务地址:{" + path + "}");
-		System.out.println("进入拦截器");
+		System.out.println("出拦截器");
 		return true;
 	}
 

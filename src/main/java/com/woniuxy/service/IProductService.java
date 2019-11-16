@@ -11,6 +11,11 @@ public interface IProductService {
 	void update(Product product);
 	Product findOne(Integer proid);
 	List<Product> findAll();
+<<<<<<< HEAD
 	List<Product> findAll1(int i);
 	Integer findCountPage();
+=======
+	 //查找热门前n产品
+	List<Product> findByLooktimesTen(Integer num);
+>>>>>>> branch 'dev' of git@github.com:zhangyan0215/paipai.git
 }
