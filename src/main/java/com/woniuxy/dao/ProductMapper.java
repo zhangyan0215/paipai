@@ -34,15 +34,11 @@ public interface ProductMapper {
     
     //多表联合查询产品
     List<Product> selectAll();
-<<<<<<< HEAD
     //产品收藏数查询
     List<Product> selectAll1(RowBounds rb);
     //总行数查询
     int selectCountPage();
-=======
     
     //查找热门前n产品
 	List<Product> selectByLooktimesTen(Integer num);
-	
->>>>>>> branch 'dev' of git@github.com:zhangyan0215/paipai.git
 }

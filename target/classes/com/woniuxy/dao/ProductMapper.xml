@@ -362,7 +362,6 @@
 	</association>  		
   </resultMap>
   
-<<<<<<< HEAD
   <!-- 多表联合查询收藏数 -->
   	<select id="selectAll1" resultMap="rm1">
   	select * from product 
@@ -404,7 +403,6 @@
   <select id="selectCountPage" resultType="java.lang.Integer">
   	select count(*) from product
   </select>
-=======
   
   
    <select id="selectByLooktimesTen" parameterType="java.lang.Integer" resultMap="rmTen">
@@ -444,7 +442,6 @@
   
   
   
->>>>>>> branch 'dev' of git@github.com:zhangyan0215/paipai.git
   
   
   

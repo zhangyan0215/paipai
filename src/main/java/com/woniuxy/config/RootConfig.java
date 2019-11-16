@@ -13,14 +13,9 @@ public class RootConfig implements WebMvcConfigurer {
 		registry.addMapping("/**") //
 				.allowedOrigins("*") //
 				.allowedMethods("*") //
-<<<<<<< HEAD
-				.allowedHeaders("*")
-				.allowCredentials(true);
-=======
 				.allowedHeaders("Access-Control-Allow-Origin", "*")
 				.allowCredentials(true)   //允许客户端跨域ajax携带cookie
 				.maxAge(60);  
->>>>>>> branch 'dev' of git@github.com:zhangyan0215/paipai.git
 	}
 
 	@Override

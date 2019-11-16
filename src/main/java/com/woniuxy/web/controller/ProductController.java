@@ -1,20 +1,14 @@
 package com.woniuxy.web.controller;
 
-<<<<<<< HEAD
-import java.util.ArrayList;
-import java.util.HashMap;
-=======
 import java.io.File;
 import java.io.IOException;
->>>>>>> branch 'dev' of git@github.com:zhangyan0215/paipai.git
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
-<<<<<<< HEAD
 import java.util.Map;
-=======
 import java.util.UUID;
 
 import javax.servlet.http.HttpServletRequest;
->>>>>>> branch 'dev' of git@github.com:zhangyan0215/paipai.git
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -41,7 +35,6 @@ public class ProductController {
 	public List<Product> findAll() {
 		return service.findAll();
 	}
-<<<<<<< HEAD
 	
 	@GetMapping("front")
 	public List<Product> findAll1(@RequestParam int page) {
@@ -61,8 +54,7 @@ public class ProductController {
 		return map;
 	}
  
-} 
-=======
+
 
 	// 查找热门前n产品
 	@GetMapping("{num}")
@@ -99,4 +91,3 @@ public class ProductController {
 	}
 
 }
->>>>>>> branch 'dev' of git@github.com:zhangyan0215/paipai.git

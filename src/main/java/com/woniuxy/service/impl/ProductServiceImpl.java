@@ -45,7 +45,7 @@ public class ProductServiceImpl implements IProductService {
 	public List<Product> findAll() {
 		return mapper.selectAll();
 	}
-<<<<<<< HEAD
+
 
 	@Override
 	public List<Product> findAll1(int i) {
@@ -66,7 +66,7 @@ public class ProductServiceImpl implements IProductService {
 		return a;
 	}
 
-=======
+
 	
 	//查找热门前n产品
 	@Transactional
@@ -74,5 +74,4 @@ public class ProductServiceImpl implements IProductService {
 	public List<Product> findByLooktimesTen(Integer num) {
 		return mapper.selectByLooktimesTen(num);
 	}
->>>>>>> branch 'dev' of git@github.com:zhangyan0215/paipai.git
 }

@@ -3,18 +3,10 @@ package com.woniuxy.config;
 import java.util.HashMap;
 import java.util.Map;
 
-import javax.security.auth.Subject;
-
-import org.apache.shiro.authc.AuthenticationException;
-import org.apache.shiro.authc.AuthenticationInfo;
-import org.apache.shiro.authc.AuthenticationToken;
 import org.apache.shiro.authc.credential.HashedCredentialsMatcher;
-import org.apache.shiro.authz.AuthorizationInfo;
-import org.apache.shiro.realm.AuthorizingRealm;
 import org.apache.shiro.realm.jdbc.JdbcRealm;
 import org.apache.shiro.realm.jdbc.JdbcRealm.SaltStyle;
 import org.apache.shiro.spring.web.ShiroFilterFactoryBean;
-import org.apache.shiro.subject.PrincipalCollection;
 import org.apache.shiro.web.mgt.DefaultWebSecurityManager;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -90,11 +82,7 @@ public class ShiroConfig {
 		Map<String, String> map = new HashMap<>();
 		map.put("/users/login", "anon");
 		map.put("/logout", "logout");
-<<<<<<< HEAD
 //		map.put("/**", "authc");
-=======
-		/* map.put("/**", "authc"); */
->>>>>>> branch 'dev' of git@github.com:zhangyan0215/paipai.git
 		shiroFilter.setFilterChainDefinitionMap(map);
 		return shiroFilter;
 	}
