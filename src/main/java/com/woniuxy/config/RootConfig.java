@@ -16,6 +16,7 @@ public class RootConfig implements WebMvcConfigurer {
 				.allowCredentials(true)
 				.allowedHeaders("*")
 				.maxAge(60);
+
 	}
 
 	@Override

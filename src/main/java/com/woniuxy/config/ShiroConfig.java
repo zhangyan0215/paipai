@@ -6,7 +6,6 @@ import java.util.Map;
 import org.apache.shiro.authc.credential.HashedCredentialsMatcher;
 import org.apache.shiro.realm.jdbc.JdbcRealm;
 import org.apache.shiro.realm.jdbc.JdbcRealm.SaltStyle;
-import org.apache.shiro.spring.security.interceptor.AuthorizationAttributeSourceAdvisor;
 import org.apache.shiro.spring.web.ShiroFilterFactoryBean;
 import org.apache.shiro.web.mgt.DefaultWebSecurityManager;
 import org.springframework.context.annotation.Bean;
@@ -35,6 +34,24 @@ public class ShiroConfig {
 		hcm.setHashIterations(1024);
 		return hcm;
 	}
+	
+//	public class MyBatisRealm extends AuthorizingRealm{
+//		private UserinfoMapper userinfoMapper;
+//		@Override
+//		protected AuthorizationInfo doGetAuthorizationInfo(PrincipalCollection principals) {
+//			// TODO Auto-generated method stub
+//			Subject.getSubject(acc);
+//			//跟数据库做比对
+//			return null;
+//		}
+//
+//		@Override
+//		protected AuthenticationInfo doGetAuthenticationInfo(AuthenticationToken token) throws AuthenticationException {
+//			// TODO Auto-generated method stub
+//			return null;
+//		}
+//		
+//	}
 	//realm
 	@Bean
 	public JdbcRealm realm() {
@@ -65,7 +82,7 @@ public class ShiroConfig {
 		Map<String, String> map = new HashMap<>();
 		map.put("/users/login", "anon");
 		map.put("/logout", "logout");
-		/* map.put("/**", "authc"); */
+//		map.put("/**", "authc");
 		shiroFilter.setFilterChainDefinitionMap(map);
 		return shiroFilter;
 	}

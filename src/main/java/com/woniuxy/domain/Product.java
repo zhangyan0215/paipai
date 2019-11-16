@@ -30,13 +30,23 @@ public class Product implements Serializable {
 
 	private Integer uid;
 
-	private static final long serialVersionUID = 1L;
-
 	private Category category;
 
 	private Address address;
 
 	private Users users;
+
+	private Integer cols;   //收藏数，数据库无此数据不影响
+
+	private static final long serialVersionUID = 1L;
+
+	public Integer getCols() {
+		return cols;
+	}
+
+	public void setCols(Integer cols) {
+		this.cols = cols;
+	}
 
 	public Category getCategory() {
 		return category;

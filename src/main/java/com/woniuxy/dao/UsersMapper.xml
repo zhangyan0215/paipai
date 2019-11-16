@@ -108,7 +108,7 @@
       #{salt,jdbcType=VARCHAR}, #{photo,jdbcType=VARCHAR}, #{status,jdbcType=INTEGER}
       )
   </insert>
-  <insert id="insertSelective" parameterType="com.woniuxy.domain.Users">
+  <insert id="insertSelective" parameterType="com.woniuxy.domain.Users" useGeneratedKeys="true" keyProperty="uid">
     insert into users
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="uid != null">
@@ -248,4 +248,15 @@
 	  	<result property="tel" column="tel"/>
 	</collection>
   </resultMap>
+  
+  
+  
+  
+  
+  
+  
+  
+  <insert id="saveUserRole" parameterType="java.util.Map">
+  	insert into users_roles values(#{uid}, #{rid})
+  </insert>
 </mapper>

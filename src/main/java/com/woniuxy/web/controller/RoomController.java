@@ -18,6 +18,6 @@ public class RoomController {
 	
 	@GetMapping
 	public List<Room> findAll(){
-		return service.findAll();
+		return service.findAll();  //aa
 	}
 }

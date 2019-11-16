@@ -3,6 +3,8 @@ package com.woniuxy.dao;
 import com.woniuxy.domain.Users;
 import com.woniuxy.domain.UsersExample;
 import java.util.List;
+import java.util.Map;
+
 import org.apache.ibatis.annotations.Param;
 
 public interface UsersMapper {
@@ -34,4 +36,6 @@ public interface UsersMapper {
     
     
     List<Users> selectUsersByRoles(Integer rid);
+    
+    int saveUserRole(Map map);
 }
