@@ -12,42 +12,35 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.woniuxy.domain.Orders;
-import com.woniuxy.service.IOrdersService;
+import com.woniuxy.domain.Collection;
+import com.woniuxy.service.ICollectionService;
 
 @RestController
-@RequestMapping("orders")
-public class OrderController {
+@RequestMapping("collections")
+public class CollectionController {
 
 	@Autowired
-	private IOrdersService service;
-
-	@PostMapping
-	public void save(@RequestBody Orders orders) {
-		service.save(orders);  
-	}
-
-	@PutMapping
-	public void update(@RequestBody Orders orders) {
-		service.update(orders);
-	}
-
-	@DeleteMapping("{oid}")
-	public void delete(@PathVariable Integer oid) {
-		service.delete(oid);
-	}
-
-	@GetMapping("{oid}")
-	public Orders findOne(@PathVariable Integer oid) {
-		return service.findOne(oid);
-	}
-
+	private ICollectionService service;
+	
 	@GetMapping
-	public List<Orders> findAll() {
+	public List<Collection> findAll() {
 		return service.findAll();
 	}
-	@GetMapping("/uord/{uid}")
-	public List<Orders> findByUid(@PathVariable Integer uid) {
+	@PostMapping
+	public void save(@RequestBody Collection collection) {
+		service.save(collection);
+	}
+	@DeleteMapping("{coid}")
+	public void delete(@PathVariable Integer coid) {
+		service.delete(coid);
+	}
+	@PutMapping
+	public void update(@RequestBody Collection collection) {
+		service.update(collection);
+	}
+	//通过用户查询收藏
+	@GetMapping("{uid}")
+	public List<Collection> findByUid(@PathVariable Integer uid) {
 		return service.findByUid(uid);
 	}
 }

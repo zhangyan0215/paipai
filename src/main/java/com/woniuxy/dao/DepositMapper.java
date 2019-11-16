@@ -27,4 +27,6 @@ public interface DepositMapper {
     int updateByPrimaryKeySelective(Deposit record);
 
     int updateByPrimaryKey(Deposit record);
+
+	List<Deposit> findByUid(Integer uid);
 }

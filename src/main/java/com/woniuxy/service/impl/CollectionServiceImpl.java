@@ -44,5 +44,9 @@ public class CollectionServiceImpl implements ICollectionService {
 	public List<Collection> findAll() {
 		return mapper.selectByExample(null);
 	}
-
+	@Transactional(readOnly = true)
+	@Override
+	public List<Collection> findByUid(Integer uid) {
+		return mapper.findByUid(uid);
+	}
 }

@@ -11,4 +11,5 @@ public interface IDepositService {
 	void delete(Integer did);
 	Deposit findOne(Integer did);
 	List<Deposit> findAll();
+	List<Deposit> findByUid(Integer uid);
 }

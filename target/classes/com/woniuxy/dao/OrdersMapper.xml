@@ -291,42 +291,51 @@
 	</update>
 
 
-	<select id="findOrdersWithProductAndUsers" resultMap="rm">
-		SELECT * FROM orders o JOIN users u
+
+	<!-- 查询订单时关联用户和产品 /可选择依据用户id-->
+	<select id="findOrdersWithProductAndUsers"  parameterType="java.lang.Integer" resultMap="rm">
+		SELECT *
+		FROM orders o JOIN users u
 		ON o.uid = u.uid
 		JOIN product p
-		ON o.proid = p.proid
+		ON o.proid =
+		p.proid
+		<where>
+			<if test="_parameter != null">o.uid = #{_parameter}</if>
+		</where>
 	</select>
 	<resultMap type="com.woniuxy.domain.Orders" id="rm">
-		<id property="oid" column="oid"/>
-		<result property="proid" column="proid"/>
-		<result property="uid" column="uid"/>
-		<result property="price" column="price"/>
-		<result property="datetime" column="datetime"/>
-		<result property="pay" column="pay"/>
-		<result property="limitTime" column="limit_time"/>
-		<result property="paytime" column="paytime"/>
-		<association property="users" javaType="com.woniuxy.domain.Users">
-			<id property="uid" column="uid"/>
-			<result property="username" column="username"/>
-			<result property="password" column="password"/>
-			<result property="salt" column="salt"/>
-			<result property="photo" column="photo"/>
-			<result property="status" column="status"/>
+		<id property="oid" column="oid" />
+		<result property="proid" column="proid" />
+		<result property="uid" column="uid" />
+		<result property="price" column="price" />
+		<result property="datetime" column="datetime" />
+		<result property="pay" column="pay" />
+		<result property="limitTime" column="limit_time" />
+		<result property="paytime" column="paytime" />
+		<association property="users"
+			javaType="com.woniuxy.domain.Users">
+			<id property="uid" column="uid" />
+			<result property="username" column="username" />
+			<result property="password" column="password" />
+			<result property="salt" column="salt" />
+			<result property="photo" column="photo" />
+			<result property="status" column="status" />
 		</association>
-		<association property="product" javaType="com.woniuxy.domain.Product">
-			<id property="proid" column="proid"/>
-			<result property="pname" column="pname"/>
-			<result property="startPrice" column="startPrice"/>
-			<result property="startTime" column="startTime"/>
-			<result property="endTime" column="endTime"/>
-			<result property="looktimes" column="looktimes"/>
-			<result property="photo" column="photo"/>
-			<result property="status" column="status"/>
-			<result property="cid" column="cid"/>
-			<result property="aid" column="aid"/>
-			<result property="addmoney" column="addmoney"/>
-			<result property="uid" column="uid"/>
+		<association property="product"
+			javaType="com.woniuxy.domain.Product">
+			<id property="proid" column="proid" />
+			<result property="pname" column="pname" />
+			<result property="startPrice" column="startPrice" />
+			<result property="startTime" column="startTime" />
+			<result property="endTime" column="endTime" />
+			<result property="looktimes" column="looktimes" />
+			<result property="photo" column="photo" />
+			<result property="status" column="status" />
+			<result property="cid" column="cid" />
+			<result property="aid" column="aid" />
+			<result property="addmoney" column="addmoney" />
+			<result property="uid" column="uid" />
 		</association>
 	</resultMap>
 </mapper>

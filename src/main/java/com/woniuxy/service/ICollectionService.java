@@ -11,4 +11,5 @@ public interface ICollectionService {
 	void update(Collection collection);
 	Collection findOne(Integer coid);
 	List<Collection> findAll();
+	List<Collection> findByUid(Integer uid);
 }

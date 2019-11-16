@@ -12,42 +12,38 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.woniuxy.domain.Orders;
-import com.woniuxy.service.IOrdersService;
+import com.woniuxy.domain.UserAddress;
+import com.woniuxy.service.IUserAddressService;
 
 @RestController
-@RequestMapping("orders")
-public class OrderController {
+@RequestMapping("useraddresss")
+public class UserAddressController {
 
 	@Autowired
-	private IOrdersService service;
-
+	private IUserAddressService service;
+	
 	@PostMapping
-	public void save(@RequestBody Orders orders) {
-		service.save(orders);  
+	public void save(@RequestBody UserAddress userAddress) {
+		service.save(userAddress);
 	}
-
+	@DeleteMapping
+	public void delete(@PathVariable Integer uaid) {
+		service.delete(uaid);
+	}
 	@PutMapping
-	public void update(@RequestBody Orders orders) {
-		service.update(orders);
+	public void update(@RequestBody UserAddress userAddress) {
+		service.update(userAddress);
 	}
-
-	@DeleteMapping("{oid}")
-	public void delete(@PathVariable Integer oid) {
-		service.delete(oid);
+	@GetMapping("{uaid}")
+	public UserAddress findOne(@PathVariable Integer uaid) {
+		return service.findOne(uaid);
 	}
-
-	@GetMapping("{oid}")
-	public Orders findOne(@PathVariable Integer oid) {
-		return service.findOne(oid);
-	}
-
 	@GetMapping
-	public List<Orders> findAll() {
+	public List<UserAddress> findAll() {
 		return service.findAll();
 	}
-	@GetMapping("/uord/{uid}")
-	public List<Orders> findByUid(@PathVariable Integer uid) {
+	@GetMapping("/uads/{uid}")
+	public List<UserAddress> findByUid(@PathVariable Integer uid) {
 		return service.findByUid(uid);
 	}
 }

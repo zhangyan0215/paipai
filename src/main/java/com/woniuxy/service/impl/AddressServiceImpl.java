@@ -45,5 +45,4 @@ public class AddressServiceImpl implements IAddressService {
 	public List<Address> findAll() {
 		return mapper.selectByExample(null);
 	}
-
 }

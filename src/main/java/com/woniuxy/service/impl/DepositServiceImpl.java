@@ -45,4 +45,10 @@ public class DepositServiceImpl implements IDepositService {
 		return mapper.selectByExample(null);
 	}
 
+	@Override
+	public List<Deposit> findByUid(Integer uid) {
+		
+		return mapper.findByUid(uid);
+	}
+
 }

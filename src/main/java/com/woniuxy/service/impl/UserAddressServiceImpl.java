@@ -45,4 +45,9 @@ public class UserAddressServiceImpl implements IUserAddressService {
 		return mapper.selectByExample(null);
 	}
 
+	@Override
+	public List<UserAddress> findByUid(Integer uid) {
+		return mapper.findByUid(uid);
+	}
+
 }

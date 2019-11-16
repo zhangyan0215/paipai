@@ -28,5 +28,6 @@ public interface OrdersMapper {
 
     int updateByPrimaryKey(Orders record);
     
-    List<Orders> findOrdersWithProductAndUsers();
+    List<Orders> findOrdersWithProductAndUsers(Integer uid);
+
 }

@@ -27,4 +27,5 @@ public interface AddressMapper {
     int updateByPrimaryKeySelective(Address record);
 
     int updateByPrimaryKey(Address record);
+
 }

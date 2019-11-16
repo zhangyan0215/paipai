@@ -27,4 +27,6 @@ public interface CollectionMapper {
     int updateByPrimaryKeySelective(Collection record);
 
     int updateByPrimaryKey(Collection record);
+    
+    List<Collection> findByUid(Integer uid);
 }

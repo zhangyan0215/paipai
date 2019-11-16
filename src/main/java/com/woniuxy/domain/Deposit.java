@@ -3,56 +3,69 @@ package com.woniuxy.domain;
 import java.io.Serializable;
 import java.util.Date;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 public class Deposit implements Serializable {
-    private Integer did;
+	private Integer did;
 
-    private Integer uid;
+	private Integer uid;
 
-    private Integer proid;
+	private Integer proid;
 
-    private Double money;
+	private Double money;
 
-    private Date datetime;
+	private Date datetime;
 
-    private static final long serialVersionUID = 1L;
+	private Product product;
 
-    public Integer getDid() {
-        return did;
-    }
+	private static final long serialVersionUID = 1L;
 
-    public void setDid(Integer did) {
-        this.did = did;
-    }
+	public Product getProduct() {
+		return product;
+	}
 
-    public Integer getUid() {
-        return uid;
-    }
+	public void setProduct(Product product) {
+		this.product = product;
+	}
 
-    public void setUid(Integer uid) {
-        this.uid = uid;
-    }
+	public Integer getDid() {
+		return did;
+	}
 
-    public Integer getProid() {
-        return proid;
-    }
+	public void setDid(Integer did) {
+		this.did = did;
+	}
 
-    public void setProid(Integer proid) {
-        this.proid = proid;
-    }
+	public Integer getUid() {
+		return uid;
+	}
 
-    public Double getMoney() {
-        return money;
-    }
+	public void setUid(Integer uid) {
+		this.uid = uid;
+	}
 
-    public void setMoney(Double money) {
-        this.money = money;
-    }
+	public Integer getProid() {
+		return proid;
+	}
 
-    public Date getDatetime() {
-        return datetime;
-    }
+	public void setProid(Integer proid) {
+		this.proid = proid;
+	}
 
-    public void setDatetime(Date datetime) {
-        this.datetime = datetime;
-    }
+	public Double getMoney() {
+		return money;
+	}
+
+	public void setMoney(Double money) {
+		this.money = money;
+	}
+
+	@JsonFormat(pattern = "yyyy-MM-dd", timezone = "GMT+8")
+	public Date getDatetime() {
+		return datetime;
+	}
+
+	public void setDatetime(Date datetime) {
+		this.datetime = datetime;
+	}
 }
