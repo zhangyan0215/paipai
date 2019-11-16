@@ -12,6 +12,7 @@ import org.springframework.transaction.annotation.Transactional;
 import com.woniuxy.dao.UsersMapper;
 import com.woniuxy.dao.UsersRolesMapper;
 import com.woniuxy.domain.Users;
+import com.woniuxy.domain.UsersExample;
 import com.woniuxy.domain.UsersRolesKey;
 import com.woniuxy.service.IUsersService;
 
@@ -68,6 +69,14 @@ public class UsersServiceImpl implements IUsersService {
 	public List<Users> findAllUsersByroles(Integer rid) {
 		// TODO Auto-generated method stub
 		return mapper.selectUsersByRoles(rid);
+	}
+
+	@Override
+	public List<Users> findByUsername(String username) {
+		// TODO Auto-generated method stub
+		UsersExample usersExample = new UsersExample();
+		usersExample.or().andUsernameEqualTo(username);
+		return (List<Users>) mapper.selectByExample(usersExample);
 	}
 
 }

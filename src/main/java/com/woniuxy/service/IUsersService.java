@@ -12,4 +12,5 @@ public interface IUsersService {
 	Users findOne(Integer uid);
 	List<Users> findAll();
 	List<Users> findAllUsersByroles(Integer rid);
+	List<Users> findByUsername(String username);
 }

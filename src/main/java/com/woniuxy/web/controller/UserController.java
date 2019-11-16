@@ -28,7 +28,7 @@ public class UserController {
 	@Autowired
 	private IUsersService us;
 	
-	/* @RequestMapping("save") */
+	//注册用户（传入角色id以此来添加用户并同时在用户角色表进行数据添加）
 	@PostMapping("{rid}")
 	public void saveUser(@RequestBody Users user,@PathVariable Integer rid) {
 		
@@ -37,6 +37,18 @@ public class UserController {
 		System.out.println(user.getPassword()+" " + user.getUsername()+rid);
 		us.save(user,rid);
 		
+	}
+	
+	@RequestMapping("findByUsername/{username}")
+	public String findByName(@PathVariable String username) {
+		System.out.println("进入findByNAME-----------------"+username);
+		List<Users> users = us.findByUsername(username);
+		System.out.println(users);
+		if(users.isEmpty()) {
+			return "ok";
+		}else {
+			return "no";
+		}
 	}
 	
 	@PutMapping
@@ -85,17 +97,19 @@ public class UserController {
 	public List<Users> findAllSellers(@RequestBody Map map){
 		Integer rid = (Integer) map.get("rid");
 		List<Users> users = us.findAllUsersByroles(rid);
-		System.out.println(users);
 		return users;
 	}
 	
 	@RequestMapping("isLogin")
 	public Map<String, Object> isLogin() {
 		Subject subject = SecurityUtils.getSubject();
-		System.out.println(subject.getSession().getId()+"loginiiiiiiiiii");
-		System.out.println(subject.isAuthenticated());
+		String username = (String) subject.getPrincipal();
 		Map<String, Object> map = new HashMap<>();
-		map.put("isLogin", subject.isAuthenticated());
+		map.put("status",subject.isAuthenticated()?200:500);
+		map.put("username", username);
+		if(username!=null) {
+			map.put("users", us.findByUsername(username));
+		}
 		return map;
 	}
 	

@@ -3,11 +3,18 @@ package com.woniuxy.config;
 import java.util.HashMap;
 import java.util.Map;
 
+import javax.security.auth.Subject;
+
+import org.apache.shiro.authc.AuthenticationException;
+import org.apache.shiro.authc.AuthenticationInfo;
+import org.apache.shiro.authc.AuthenticationToken;
 import org.apache.shiro.authc.credential.HashedCredentialsMatcher;
+import org.apache.shiro.authz.AuthorizationInfo;
+import org.apache.shiro.realm.AuthorizingRealm;
 import org.apache.shiro.realm.jdbc.JdbcRealm;
 import org.apache.shiro.realm.jdbc.JdbcRealm.SaltStyle;
-import org.apache.shiro.spring.security.interceptor.AuthorizationAttributeSourceAdvisor;
 import org.apache.shiro.spring.web.ShiroFilterFactoryBean;
+import org.apache.shiro.subject.PrincipalCollection;
 import org.apache.shiro.web.mgt.DefaultWebSecurityManager;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -35,6 +42,24 @@ public class ShiroConfig {
 		hcm.setHashIterations(1024);
 		return hcm;
 	}
+	
+//	public class MyBatisRealm extends AuthorizingRealm{
+//		private UserinfoMapper userinfoMapper;
+//		@Override
+//		protected AuthorizationInfo doGetAuthorizationInfo(PrincipalCollection principals) {
+//			// TODO Auto-generated method stub
+//			Subject.getSubject(acc);
+//			//跟数据库做比对
+//			return null;
+//		}
+//
+//		@Override
+//		protected AuthenticationInfo doGetAuthenticationInfo(AuthenticationToken token) throws AuthenticationException {
+//			// TODO Auto-generated method stub
+//			return null;
+//		}
+//		
+//	}
 	//realm
 	@Bean
 	public JdbcRealm realm() {

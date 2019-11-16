@@ -13,8 +13,8 @@ public class RootConfig implements WebMvcConfigurer {
 		registry.addMapping("/**") //
 				.allowedOrigins("*") //
 				.allowedMethods("*") //
-				.allowedHeaders("*")
-				.allowCredentials(true)   //允许客户端跨ajax域携带cookie
+				.allowedHeaders("Access-Control-Allow-Origin", "*")
+				.allowCredentials(true)   //允许客户端跨域ajax携带cookie
 				.maxAge(60);  
 	}
 
