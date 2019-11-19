@@ -30,11 +30,6 @@ public interface UsersMapper {
 
     int updateByPrimaryKey(Users record);
     
-    
-    
-    
-    
-    
     List<Users> selectUsersByRoles(Integer rid);
     
     int saveUserRole(Map map);

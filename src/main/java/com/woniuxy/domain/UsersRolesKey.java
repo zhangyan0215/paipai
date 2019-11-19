@@ -2,28 +2,26 @@ package com.woniuxy.domain;
 
 import java.io.Serializable;
 
-import org.springframework.stereotype.Component;
-
 public class UsersRolesKey implements Serializable {
-    private Integer uid;
+	private Integer uid;
 
-    private Integer rid;
+	private Integer rid;
 
-    private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = 1L;
 
-    public Integer getUid() {
-        return uid;
-    }
+	public Integer getUid() {
+		return uid;
+	}
 
-    public void setUid(Integer uid) {
-        this.uid = uid;
-    }
+	public void setUid(Integer uid) {
+		this.uid = uid;
+	}
 
-    public Integer getRid() {
-        return rid;
-    }
+	public Integer getRid() {
+		return rid;
+	}
 
-    public void setRid(Integer rid) {
-        this.rid = rid;
-    }
+	public void setRid(Integer rid) {
+		this.rid = rid;
+	}
 }

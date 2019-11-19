@@ -15,7 +15,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.woniuxy.domain.Users;
@@ -27,61 +26,70 @@ public class UserController {
 
 	@Autowired
 	private IUsersService us;
-	
-	//注册用户（传入角色id以此来添加用户并同时在用户角色表进行数据添加）
+
+	// 注册用户（传入角色id以此来添加用户并同时在用户角色表进行数据添加）
 	@PostMapping("{rid}")
-	public void saveUser(@RequestBody Users user,@PathVariable Integer rid) {
-		
+	public void saveUser(@RequestBody Users user, @PathVariable Integer rid) {
 		System.out.println("UserController.saveUser()");
-		/* Integer roles = (Integer) map.get("roles"); */
-		System.out.println(user.getPassword()+" " + user.getUsername()+rid);
-		us.save(user,rid);
-		
+		System.out.println(user.getPassword() + " " + user.getUsername() + rid);
+		us.save(user, rid);
 	}
 	
-	@RequestMapping("findByUsername/{username}")
-	public String findByName(@PathVariable String username) {
-		System.out.println("进入findByNAME-----------------"+username);
-		List<Users> users = us.findByUsername(username);
-		System.out.println(users);
-		if(users.isEmpty()) {
-			return "ok";
-		}else {
-			return "no";
-		}
-	}
-	
+	//修改用户
 	@PutMapping
 	public void update(Users user) {
 		us.update(user);
 	}
-	
+
+	//查询所有
 	@GetMapping
-	public List<Users> findAllUsers(){
+	public List<Users> findAllUsers() {
 		System.out.println("UserController.findAllUsers()");
-		List<Users> users = us.findAll(); 
+		List<Users> users = us.findAll();
 		return users;
 	}
-	
+
 	@GetMapping("{uid}")
-	public Users findOneUsers(@PathVariable Integer uid){
+	public Users findOneUsers(@PathVariable Integer uid) {
 		Users user = us.findOne(uid);
 		return user;
 	}
 	
-	@RequestMapping("login")
-	public String login(String username,String password){
+	// 查询用户名是否被使用
+	@RequestMapping("findByUsername/{username}")
+	public String findByName(@PathVariable String username) {
+		System.out.println("进入findByNAME-----------------" + username);
+		List<Users> users = us.findByUsername(username);
+		System.out.println(users);
+		if (users.isEmpty()) {
+			return "ok";
+		} else {
+			return "no";
+		}
+	}
+
+	// 前台登录
+	@RequestMapping("/indexlogin")
+	public Users indexlogin(@RequestBody Users users) {
 		Subject subject = SecurityUtils.getSubject();
-		UsernamePasswordToken token = new UsernamePasswordToken(username,password);
+		UsernamePasswordToken token = new UsernamePasswordToken(users.getUsername(), users.getPassword());
+		subject.login(token);
+		return us.findByUsername(users.getUsername()).get(0);
+	}
+
+	// 后台登录
+	@RequestMapping("/login")
+	public String login(@RequestBody Users users) {
+		Subject subject = SecurityUtils.getSubject();
+		UsernamePasswordToken token = new UsernamePasswordToken(users.getUsername(), users.getPassword());
+		subject.login(token);
 		try {
 			subject.login(token);
-			System.out.println(subject.getSession().getId()+"login");
+			System.out.println(subject.getSession().getId() + "login");
 			System.out.println("认证成功");
-			if(subject.hasRole("超级管理员")||subject.hasRole("普通管理员")) {
+			if (subject.hasRole("超级管理员") || subject.hasRole("普通管理员")) {
 				return "index";
-			}else if(subject.hasRole("卖家")||subject.hasRole("买家")) {
-				return "index";
-			}else {
+			} else {
 				return "login";
 			}
 		} catch (AuthenticationException e) {
@@ -91,26 +99,23 @@ public class UserController {
 			return "login";
 		}
 	}
-	
-	//根据角色查找所有用户
+
+	// 根据角色查找所有用户(后台方法)
+	@SuppressWarnings("rawtypes")
 	@RequestMapping("findAllUsersByroles")
-	public List<Users> findAllSellers(@RequestBody Map map){
+	public List<Users> findAllSellers(@RequestBody Map map) {
 		Integer rid = (Integer) map.get("rid");
 		List<Users> users = us.findAllUsersByroles(rid);
 		return users;
 	}
-	
+
+	// 检查用户是否登陆
 	@RequestMapping("isLogin")
 	public Map<String, Object> isLogin() {
 		Subject subject = SecurityUtils.getSubject();
-		String username = (String) subject.getPrincipal();
 		Map<String, Object> map = new HashMap<>();
-		map.put("status",subject.isAuthenticated()?200:500);
-		map.put("username", username);
-		if(username!=null) {
-			map.put("users", us.findByUsername(username));
-		}
+		map.put("isLogin", subject.isAuthenticated());
 		return map;
 	}
-	
+
 }
